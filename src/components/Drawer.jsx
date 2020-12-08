@@ -20,12 +20,14 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import TableChartIcon from '@material-ui/icons/TableChart';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+
     '& > svg': {
       margin: theme.spacing(2),
     },
@@ -49,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  grid: {
+    marginTop: 100,
+    marginLeft: 250,
+  }
 }));
 
 const userData = get_data("cred")
@@ -74,7 +80,8 @@ export default function ClippedDrawer() {
          <Link to="/" style={{color:"white"}}> <HomeIcon /> </Link>
              </IconButton>
              <Typography variant="h6" className={classes.title}>
-              Welcome {userData.username}
+              {/* Welcome {userData.username} */}
+              Welcome
              </Typography>
             <Button color="white"><Link style={{color: "white", textDecoration: 'none'}} to="/login">Login</Link></Button>
            <Button color="white"><Link style={{color: "white", textDecoration: 'none'}} to="/register">Register</Link></Button>
@@ -117,12 +124,17 @@ export default function ClippedDrawer() {
               <ListItemIcon><TableChartIcon /></ListItemIcon>
               <Link style={{color: "black", textDecoration: 'none'}}  to="/table"><ListItemText primary="Table"/></Link>
             </ListItem>
+
+            <ListItem button key="Profile" >
+              <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+              <Link style={{color: "black", textDecoration: 'none'}}  to="/profile"><ListItemText primary="Profile"/></Link>
+            </ListItem>
            </List>
           <Divider />
         </div>
       </Drawer>
       </Grid>
-        <Grid item lg={10} style={{backgroundColor: '#f4f4f2'}}>
+        <Grid className={classes.grid} item lg={10} style={{backgroundColor: '#f4f4f2'}}>
           <Routes />
         </Grid>
       </Grid>

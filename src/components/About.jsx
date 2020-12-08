@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -6,20 +6,36 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
+import Skeleton from 'react-loading-skeleton';
 
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 500,
-    marginTop: 150,
-    marginLeft: 325,
+    marginTop: 10,
   },
 });
 
 export default function About() {
   const classes = useStyles();
+  const [loading,setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() =>{
+      setLoading(false)
+    }, 1000)
+  }, [])
 
   return (
+    <React.Fragment>
+      {loading? 
+    <Card className={classes.root} variant="outlined"  >
+    <CardContent>
+          <Skeleton height={35} style={{marginBottom:20}} width={75}/>
+      <Skeleton count={10}/>
+      <Skeleton style={{marginTop:20}}  width={100}/>
+        </CardContent>
+    </Card>
+:
     <Card className={classes.root} variant="outlined">
       <CardActionArea>
         <CardContent>
@@ -46,5 +62,7 @@ export default function About() {
       </CardActions>
       </CardActionArea>
     </Card>
+    }
+    </React.Fragment>
   );
 }
