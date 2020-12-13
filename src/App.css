@@ -2,3 +2,6 @@
   text-align: center;
 }
 
+.home{
+  height: calc(100% - 50px);
+}

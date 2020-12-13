@@ -8,8 +8,8 @@ import Tables from "./components/Table";
 import Profile from "./components/Profile";
 
 const Routes = () => (
-    <div>
-        <Route exact path="/" component={DashboardLayout}></Route>
+    <div className='home'>
+        <Route exact path="/" component={Home}></Route>
         <Route exact path="/about" component={About}></Route>
         <Route exact path="/contact" component={Contact}></Route>
         <Route exact path="/add" component={Addblog}></Route>
